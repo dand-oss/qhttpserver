@@ -16,6 +16,10 @@ docs/html
 */*/debug
 */*/release
 
+# ASI install targets
+include
+lib
+
 # Visual studio
 *.suo
 *.ncb
