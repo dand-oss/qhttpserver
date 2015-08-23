@@ -20,6 +20,7 @@
  * IN THE SOFTWARE.
  */
 
+#define BUILD_QHTTPSERVER_API 1
 #include "qhttpserver.h"
 
 #include <QTcpServer>
