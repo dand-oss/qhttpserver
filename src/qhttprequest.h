@@ -23,7 +23,6 @@
 #ifndef Q_HTTP_REQUEST
 #define Q_HTTP_REQUEST
 
-#include "qhttpserverapi.h"
 #include "qhttpserverfwd.h"
 
 #include <QObject>
@@ -39,7 +38,7 @@
     being received by the application.
 
     The class is <b>read-only</b>. */
-class QHTTPSERVER_API QHttpRequest : public QObject
+class QHttpRequest : public QObject
 {
     Q_OBJECT
 
