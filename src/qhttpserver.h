@@ -20,18 +20,28 @@
  * IN THE SOFTWARE.
  */
 
-#ifndef Q_HTTP_SERVER
-#define Q_HTTP_SERVER
+#pragma once
 
 #define QHTTPSERVER_VERSION_MAJOR 0
 #define QHTTPSERVER_VERSION_MINOR 1
 #define QHTTPSERVER_VERSION_PATCH 0
 
-#include "qhttpserverapi.h"
 #include "qhttpserverfwd.h"
 
 #include <QObject>
 #include <QHostAddress>
+
+#ifdef _WIN32
+    #ifdef BUILD_QHTTPSERVER_API
+        #define QHTTPSERVER_API __declspec(dllexport)
+    #elif qhttpserver_EXPORTS // default by CMAKE
+        #define QHTTPSERVER_API
+    #else // used outside dll
+        #define QHTTPSERVER_API __declspec(dllimport)
+    #endif // BUILD_QHTTPSERVER_API
+#else // UNIX
+      #define QHTTPSERVER_API
+#endif // _WIN32
 
 /// Maps status codes to string reason phrases
 extern QHash<int, QString> STATUS_CODES;
@@ -95,5 +105,3 @@ private Q_SLOTS:
 private:
     QTcpServer *m_tcpServer;
 };
-
-#endif

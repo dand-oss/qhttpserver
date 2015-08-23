@@ -23,14 +23,13 @@
 #ifndef Q_HTTP_CONNECTION
 #define Q_HTTP_CONNECTION
 
-#include "qhttpserverapi.h"
 #include "qhttpserverfwd.h"
 
 #include <QObject>
 
 /// @cond nodoc
 
-class QHTTPSERVER_API QHttpConnection : public QObject
+class QHttpConnection : public QObject
 {
     Q_OBJECT
 

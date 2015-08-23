@@ -23,7 +23,6 @@
 #ifndef Q_HTTP_RESPONSE
 #define Q_HTTP_RESPONSE
 
-#include "qhttpserverapi.h"
 #include "qhttpserverfwd.h"
 
 #include <QObject>
@@ -36,7 +35,7 @@
         <li>Call write() zero or more times for body data.</li>
         <li>Call end() when the resonse can be sent back</li>
     </ol> */
-class QHTTPSERVER_API QHttpResponse : public QObject
+class QHttpResponse : public QObject
 {
     Q_OBJECT
 
