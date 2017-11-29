@@ -57,6 +57,7 @@ endif (UNIX)
 # libraries
 install(
     TARGETS ${libname}
+    RUNTIME DESTINATION bin
     LIBRARY DESTINATION lib
     ARCHIVE DESTINATION lib
 )
