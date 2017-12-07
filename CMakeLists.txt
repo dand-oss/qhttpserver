@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8)
-project(qhttpserver  C CXX)
+project(qhttpserver C CXX)
 
 ###############
 # ASI default settings
@@ -39,19 +39,17 @@ if(UNIX)
 	)
 endif(UNIX)
 
-include_directories(AFTER src http-parser)
-
 message("moc_sources: ${moc_sources}")
 
 # shared object
 set(libname qhttpserver)
 add_library(${libname} SHARED ${srcs} ${hdrs})
+target_include_directories(${libname} PRIVATE src http-parser)
 target_link_libraries(${libname} Qt5::Network)
 set_target_properties(${libname} PROPERTIES WINDOWS_EXPORT_ALL_SYMBOLS ON)
 if (UNIX)
     # force linker to resolve all deps
     set_target_properties(${libname} PROPERTIES LINK_FLAGS "-Wl,--no-undefined")
-    #target_compile_definitions(${libname} QHTTPSERVER_EXPORTS)
 endif (UNIX)
 
 # libraries
