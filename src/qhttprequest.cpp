@@ -20,6 +20,7 @@
  * IN THE SOFTWARE.
  */
 
+#define BUILD_QHTTPREQUEST_API 1
 #include "qhttprequest.h"
 
 #include "qhttpconnection.h"
