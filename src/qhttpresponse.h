@@ -23,6 +23,18 @@
 #ifndef Q_HTTP_RESPONSE
 #define Q_HTTP_RESPONSE
 
+#ifdef _WIN32
+    #ifdef BUILD_QHTTPRESPONSE_API
+        #define QHTTPRESPONSE_API __declspec(dllexport)
+    #elif qhttpserver_EXPORTS // default by CMAKE
+        #define QHTTPRESPONSE_API
+    #else // used outside dll
+        #define QHTTPRESPONSE_API __declspec(dllimport)
+    #endif // BUILD_QHTTPRESPONSE_API
+#else // UNIX
+      #define QHTTPRESPONSE_API
+#endif // _WIN32
+
 #include "qhttpserverfwd.h"
 
 #include <QObject>
@@ -35,7 +47,7 @@
         <li>Call write() zero or more times for body data.</li>
         <li>Call end() when the resonse can be sent back</li>
     </ol> */
-class QHttpResponse : public QObject
+class QHTTPRESPONSE_API QHttpResponse : public QObject
 {
     Q_OBJECT
 
