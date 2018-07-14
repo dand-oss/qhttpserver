@@ -1,5 +1,6 @@
 cmake_minimum_required(VERSION 2.8)
 project(qhttpserver C CXX)
+set(libname "qhttpserver")
 
 ###############
 # ASI default settings
@@ -11,46 +12,33 @@ asv_cmake_defaults( )
 find_package(Qt5 CONFIG REQUIRED COMPONENTS Network)
 set(CMAKE_AUTOMOC ON)
 
-list(APPEND srcs
+add_library(${libname} SHARED)
+target_include_directories(${libname} PRIVATE src http-parser)
+target_link_libraries(${libname} Qt5::Network)
+target_sources(${libname} PRIVATE
     src/qhttpconnection.cpp
     src/qhttprequest.cpp
     src/qhttpresponse.cpp
     src/qhttpserver.cpp
     http-parser/http_parser.c
-    )
 
-if(UNIX)
-    list(APPEND srcs
-        http-parser/contrib/url_parser.c
-	)
-endif(UNIX)
-
-list(APPEND hdrs
     src/qhttpconnection.h
     src/qhttprequest.h
     src/qhttpresponse.h
     src/qhttpserver.h
     src/qhttpserverfwd.h
-    )
+)
 
 if(UNIX)
-    list(APPEND srcs
+    target_sources(${libname} PRIVATE
+        http-parser/contrib/url_parser.c
         http-parser/http_parser.h
-	)
-endif(UNIX)
-
-message("moc_sources: ${moc_sources}")
-
-# shared object
-set(libname qhttpserver)
-add_library(${libname} SHARED ${srcs} ${hdrs})
-target_include_directories(${libname} PRIVATE src http-parser)
-target_link_libraries(${libname} Qt5::Network)
-set_target_properties(${libname} PROPERTIES WINDOWS_EXPORT_ALL_SYMBOLS ON)
-if (UNIX)
+    )
     # force linker to resolve all deps
     set_target_properties(${libname} PROPERTIES LINK_FLAGS "-Wl,--no-undefined")
-endif (UNIX)
+else(UNIX)
+    set_target_properties(${libname} PROPERTIES WINDOWS_EXPORT_ALL_SYMBOLS ON)
+endif(UNIX)
 
 # libraries
 install(
