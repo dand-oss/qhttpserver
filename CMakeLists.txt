@@ -9,6 +9,7 @@ include(asv_cmake_defaults)
 asv_cmake_defaults( )
 ###############
 
+set(QT_LIBINFIX "ASV")
 find_package(Qt5 CONFIG REQUIRED COMPONENTS Network)
 set(CMAKE_AUTOMOC ON)
 
