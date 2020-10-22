@@ -14,7 +14,7 @@ target_include_directories(${libname}
         ../http-parser
 )
 
-target_link_libraries(${libname} PRIVATE Qt5::Network)
+target_link_libraries(${libname} PRIVATE Qt::Network)
 
 # Source files
 target_sources(${libname} PRIVATE
