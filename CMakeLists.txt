@@ -11,11 +11,17 @@ asv_cmake_defaults( )
 
 list(APPEND CMAKE_PREFIX_PATH ${AQTDIR})
 set(QT_LIBINFIX "ASV")
-find_package(Qt5 CONFIG REQUIRED COMPONENTS Network)
+find_package(Qt6 CONFIG REQUIRED COMPONENTS
+    Network
+    )
+asv_print_package_properties(
+    # can't print these, header only  - some props not found
+    # Qt::Network
+    )
 
 add_library(${libname} SHARED)
 target_include_directories(${libname} PRIVATE src http-parser)
-target_link_libraries(${libname} Qt5::Network)
+target_link_libraries(${libname} Qt::Network)
 target_sources(${libname} PRIVATE
     src/qhttpconnection.cpp
     src/qhttprequest.cpp
