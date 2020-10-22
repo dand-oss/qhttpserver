@@ -15,12 +15,13 @@ include(asv_cmake_defaults)
 asv_cmake_defaults()
 ###############
 
-find_package(Qt5 CONFIG REQUIRED
-    PATHS ${ASV_PLAT_PORTS}/qt5 NO_DEFAULT_PATH
+find_package(Qt6 CONFIG REQUIRED
+    PATHS ${AQTDIR} NO_DEFAULT_PATH
     COMPONENTS
-    Network)
+        Network
+)
 asv_print_package_properties(
-    Qt5::Network
+    Qt::Network
 )
 
 
@@ -78,7 +79,7 @@ endif()
 
 set_target_properties(${libname} PROPERTIES
     AUTOMOC ON
-    OUTPUT_NAME "Qt5HttpServer")
+    OUTPUT_NAME "Qt6HttpServer")
 
 # Install library and headers
 install(TARGETS ${libname}
