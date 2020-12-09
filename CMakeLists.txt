@@ -12,7 +12,6 @@ asv_cmake_defaults( )
 list(APPEND CMAKE_PREFIX_PATH ${AQTDIR})
 set(QT_LIBINFIX "ASV")
 find_package(Qt5 CONFIG REQUIRED COMPONENTS Network)
-set(CMAKE_AUTOMOC ON)
 
 add_library(${libname} SHARED)
 target_include_directories(${libname} PRIVATE src http-parser)
@@ -30,6 +29,7 @@ target_sources(${libname} PRIVATE
     src/qhttpserver.h
     src/qhttpserverfwd.h
 )
+set_target_properties(${libname} PROPERTIES AUTOMOC ON)
 
 if(UNIX)
     target_sources(${libname} PRIVATE
