@@ -87,7 +87,7 @@ void QHttpRequest::storeBody()
 
 QString QHttpRequest::MethodToString(HttpMethod method)
 {
-    int index = staticMetaObject.indexOfEnumerator("HttpMethod");
+    const auto index = staticMetaObject.indexOfEnumerator("HttpMethod");
     return staticMetaObject.enumerator(index).valueToKey(method);
 }
 
