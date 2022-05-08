@@ -31,17 +31,7 @@
 #include <QObject>
 #include <QHostAddress>
 
-#ifdef _WIN32
-    #ifdef BUILD_QHTTPSERVER_API
-        #define QHTTPSERVER_API __declspec(dllexport)
-    #elif qhttpserver_EXPORTS // default by CMAKE
-        #define QHTTPSERVER_API
-    #else // used outside dll
-        #define QHTTPSERVER_API __declspec(dllimport)
-    #endif // BUILD_QHTTPSERVER_API
-#else // UNIX
-      #define QHTTPSERVER_API
-#endif // _WIN32
+#include "qhttpserver_api.h"
 
 /// Maps status codes to string reason phrases
 extern QHash<int, QString> STATUS_CODES;
