@@ -30,17 +30,7 @@
 #include <QMetaType>
 #include <QUrl>
 
-#ifdef _WIN32
-    #ifdef BUILD_QHTTPREQUEST_API
-        #define QHTTPREQUEST_API __declspec(dllexport)
-    #elif qhttpserver_EXPORTS // default by CMAKE
-        #define QHTTPREQUEST_API
-    #else // used outside dll
-        #define QHTTPREQUEST_API __declspec(dllimport)
-    #endif // BUILD_QHTTPREQUEST_API
-#else // UNIX
-      #define QHTTPREQUEST_API
-#endif // _WIN32
+#include "qhttpserver_api.h"
 
 /// The QHttpRequest class represents the header and body data sent by the client.
 /** The requests header data is available immediately. Body data is streamed as
@@ -50,7 +40,7 @@
     being received by the application.
 
     The class is <b>read-only</b>. */
-class QHTTPREQUEST_API QHttpRequest : public QObject
+class QHTTPSERVER_API QHttpRequest : public QObject
 {
     Q_OBJECT
 
