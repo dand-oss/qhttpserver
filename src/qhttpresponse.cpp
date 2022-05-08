@@ -20,7 +20,6 @@
  * IN THE SOFTWARE.
  */
 
-#define BUILD_QHTTPRESPONSE_API 1
 #include "qhttpresponse.h"
 
 #include <QDateTime>
