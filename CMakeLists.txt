@@ -28,6 +28,7 @@ target_sources(${libname} PRIVATE
     src/qhttpresponse.h
     src/qhttpserver.h
     src/qhttpserverfwd.h
+    src/qhttpserver_api.h
 )
 set_target_properties(${libname} PROPERTIES AUTOMOC ON)
 
@@ -58,5 +59,6 @@ install(
     src/qhttpresponse.h
     src/qhttpserverfwd.h
     src/qhttpserver.h
+    src/qhttpserver_api.h
     DESTINATION include/qhttpserver
 )
