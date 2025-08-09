@@ -9,14 +9,12 @@ include(asv_cmake_defaults)
 asv_cmake_defaults( )
 ###############
 
-list(APPEND CMAKE_PREFIX_PATH ${AQTDIR})
-set(QT_LIBINFIX "ASV")
-find_package(Qt6 CONFIG REQUIRED COMPONENTS
-    Network
-    )
+find_package(Qt6 CONFIG REQUIRED
+    PATHS ${AQTDIR} NO_DEFAULT_PATH
+    COMPONENTS
+    Network)
 asv_print_package_properties(
-    # can't print these, header only  - some props not found
-    # Qt::Network
+    Qt::Network
     )
 
 add_library(${libname} SHARED)
