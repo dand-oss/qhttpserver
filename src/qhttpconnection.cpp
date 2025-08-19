@@ -298,4 +298,6 @@ int QHttpConnection::Body(http_parser *parser, const char *at, size_t length)
     return 0;
 }
 
+#include "moc_qhttpconnection.cpp"
+
 /// @endcond

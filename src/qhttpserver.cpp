@@ -132,3 +132,5 @@ void QHttpServer::close()
     if (m_tcpServer)
         m_tcpServer->close();
 }
+
+#include "moc_qhttpserver.cpp"

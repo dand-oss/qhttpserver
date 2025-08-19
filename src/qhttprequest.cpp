@@ -95,3 +95,5 @@ void QHttpRequest::appendBody(const QByteArray &body)
 {
     m_body.append(body);
 }
+
+#include "moc_qhttprequest.cpp"

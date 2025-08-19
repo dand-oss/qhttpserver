@@ -195,3 +195,5 @@ void QHttpResponse::connectionClosed()
     Q_EMIT done();
     deleteLater();
 }
+
+#include "moc_qhttpresponse.cpp"
